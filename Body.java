@@ -10,7 +10,6 @@ public class Body {
 		Human hob=ctx.getBean("human",Human.class);
 		hob.humanFunc();
 
-
 	}
 
 }
