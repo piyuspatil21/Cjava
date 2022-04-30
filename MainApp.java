@@ -1,32 +1,15 @@
 package com.edu;
-@FunctionalInterface
-interface Drawable{
-	void draw();
-}
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class MainApp {
 
 	public static void main(String[] args) {
-		Drawable dob=()->{
-			System.out.println("Implementation of draw method");
-		};
-		dob.draw();
-	
-	//same as
-	Drawable ob1=new Drawable() {
-		
-		@Override
-		public void draw() {
-			System.out.println("Implementation of draw method");
-			}
-	};
-	//Implementing runnable interface using lambda expression
-	Runnable r=()->{
-		System.out.println("Inside run method");
-	};
-	//r.start();not possible
-	Thread tob=new Thread(r);
-	tob.start();
+		ApplicationContext ctx=new ClassPathXmlApplicationContext("spring.xml");
+		TextEditor te=(TextEditor) ctx.getBean("texteditor");
+		te.spellCheck();
+
 	}
-	
-	}
+
+}
